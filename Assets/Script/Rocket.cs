@@ -25,26 +25,10 @@ public class Rocket : MonoBehaviour
         Rotate();
     }
 
-    private void Rotate()
-    {
-        //In this case can accept only one rotate at the same time.
-        if (Input.GetKey(KeyCode.A))
-        {
-            //print("Rotating Left");
-            transform.Rotate(Vector3.forward);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            // print("Rotating Right");
-            transform.Rotate(-Vector3.forward);
-        }
-    }
-
     private void Thrust()
     {
         if (Input.GetKey(KeyCode.Space)) // Can thrust while rotating
         {
-            //print("Thrusting");
             this._Rigidbody.AddRelativeForce(Vector3.up);
             if (!this._AudioSource.isPlaying)
                 this._AudioSource.Play();
@@ -55,4 +39,22 @@ public class Rocket : MonoBehaviour
                 this._AudioSource.Stop();
         }
     }
+
+    private void Rotate()
+    {
+        this._Rigidbody.freezeRotation = true; // take manual control of rotation
+        //In this case can accept only one rotate at the same time.
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(Vector3.forward);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(-Vector3.forward);
+        }
+
+        this._Rigidbody.freezeRotation = false; // resume physincs control of rotation
+
+    }
+
 }
