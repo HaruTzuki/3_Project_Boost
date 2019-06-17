@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour {
 
+    //Unity Components
+    private Rigidbody _Rigidbody;
+
+
 	// Use this for initialization
 	void Start () {
-		
+        this._Rigidbody = GetComponent<Rigidbody>(); //Taking the reference of object Rigidbody.That inhireted from UnityEngine library.
 	}
 	
 	// Update is called once per frame
@@ -19,7 +23,8 @@ public class Rocket : MonoBehaviour {
     {
         if(Input.GetKey(KeyCode.Space)) // Can thrust while rotating
         {
-            print("Thrusting");
+            //print("Thrusting");
+            this._Rigidbody.AddRelativeForce(Vector3.up);
         }
 
         //In this case can accept only one rotate at the same time.
