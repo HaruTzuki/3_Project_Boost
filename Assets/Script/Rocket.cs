@@ -16,6 +16,10 @@ public class Rocket : MonoBehaviour
     [SerializeField] AudioClip Death;
     [SerializeField] AudioClip Success;
 
+    [SerializeField] ParticleSystem MainEngineParticles;
+    [SerializeField] ParticleSystem DeathParticles;
+    [SerializeField] ParticleSystem SuccessParticles;
+
     enum State
     {
         Alive, Dying, Transceding
@@ -68,14 +72,16 @@ public class Rocket : MonoBehaviour
         this._State = State.Dying;
         this._AudioSource.Stop();
         this._AudioSource.PlayOneShot(Death);
+        this.DeathParticles.Play();
         Invoke("LoadFirstLevel", 1f);
     }
 
     private void StartSuccessSequence()
     {
+        this._State = State.Transceding;
         this._AudioSource.Stop();
         this._AudioSource.PlayOneShot(Success);
-        this._State = State.Transceding;
+        this.SuccessParticles.Play();
         Invoke("LoadNextLevel", 1f);
     }
 
@@ -86,11 +92,13 @@ public class Rocket : MonoBehaviour
             this._Rigidbody.AddRelativeForce(Vector3.up * mainThrust);
             if (!this._AudioSource.isPlaying)
                 this._AudioSource.PlayOneShot(MainEngine);
+            this.MainEngineParticles.Play();
         }
         else
         {
             if (this._AudioSource.isPlaying)
                 this._AudioSource.Stop();
+            this.MainEngineParticles.Stop();
         }
     }
 
