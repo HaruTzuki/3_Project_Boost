@@ -472,6 +472,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114584042409119682, guid: f9a40659a80c05d498cc89c59da9ddce,
+        type: 2}
+      propertyPath: mainThrust
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9a40659a80c05d498cc89c59da9ddce, type: 2}
   m_IsPrefabParent: 0
@@ -584,6 +589,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e34bd843a4fa984f9b93d9afa1fcba4, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1133751665 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1468077187425090, guid: 0e34bd843a4fa984f9b93d9afa1fcba4,
+    type: 2}
+  m_PrefabInternal: {fileID: 307268282}
+--- !u!114 &1133751670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133751665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab75ecafe2241f489c84107643a4b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementVector: {x: 20, y: 0, z: 0}
+  movementFactor: 0.504
+  period: 2
 --- !u!1001 &1503263602
 Prefab:
   m_ObjectHideFlags: 0
