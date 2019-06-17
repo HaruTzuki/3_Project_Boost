@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
@@ -28,6 +29,8 @@ public class Rocket : MonoBehaviour
 
     State _State = State.Alive;
 
+    bool collisionsDisabled = false;
+
 
     // Use this for initialization
     void Start()
@@ -44,11 +47,28 @@ public class Rocket : MonoBehaviour
             RespondToThrustInput();
             RespondToRotateInput(); 
         }
+
+        if (Debug.isDebugBuild)
+        {
+            RespondToDebugKey(); 
+        }
+    }
+
+    private void RespondToDebugKey()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if(Input.GetKeyDown(KeyCode.C))
+        {
+            collisionsDisabled = !collisionsDisabled;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (this._State != State.Alive) return;
+        if (this._State != State.Alive || collisionsDisabled) return;
 
         switch (collision.gameObject.tag)
         {
