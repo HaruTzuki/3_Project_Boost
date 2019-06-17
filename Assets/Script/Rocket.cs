@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
@@ -14,6 +12,13 @@ public class Rocket : MonoBehaviour
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
 
+    enum State
+    {
+        Alive, Dying, Transceding
+    }
+
+    State _State = State.Alive;
+
 
     // Use this for initialization
     void Start()
@@ -25,12 +30,17 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Thrust();
-        Rotate();
+        if (this._State == State.Alive)
+        {
+            Thrust();
+            Rotate(); 
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (this._State != State.Alive) return;
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
@@ -38,9 +48,13 @@ public class Rocket : MonoBehaviour
                 break;
             case "Enemy":
                 print("You losing life");
+                this._State = State.Dying;
+                Invoke("LoadFirstLevel", 1f);
                 break;
-            case "FinishPoint":
+            case "Finish":
                 print("Finish");
+                this._State = State.Transceding;
+                Invoke("LoadNextLevel", 1f);
                 break;
             case "Fuel":
                 print("You are regenerate your fuel");
@@ -83,6 +97,16 @@ public class Rocket : MonoBehaviour
 
         this._Rigidbody.freezeRotation = false; // resume physincs control of rotation
 
+    }
+
+    private void LoadNextLevel()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    private void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }
