@@ -289,7 +289,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 2f949f1caa5d8474799b98e1abc0b5bd, type: 2}
     - target: {fileID: 1468077187425090, guid: 0e34bd843a4fa984f9b93d9afa1fcba4, type: 2}
       propertyPath: m_TagString
-      value: FinishPoint
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e34bd843a4fa984f9b93d9afa1fcba4, type: 2}
@@ -830,7 +830,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 2f949f1caa5d8474799b98e1abc0b5bd, type: 2}
     - target: {fileID: 1468077187425090, guid: 0e34bd843a4fa984f9b93d9afa1fcba4, type: 2}
       propertyPath: m_TagString
-      value: FinishPoint
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e34bd843a4fa984f9b93d9afa1fcba4, type: 2}
@@ -902,7 +902,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 2f949f1caa5d8474799b98e1abc0b5bd, type: 2}
     - target: {fileID: 1468077187425090, guid: 0e34bd843a4fa984f9b93d9afa1fcba4, type: 2}
       propertyPath: m_TagString
-      value: FinishPoint
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4024605193713442, guid: 0e34bd843a4fa984f9b93d9afa1fcba4, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -999,5 +999,5 @@ Transform:
   m_LocalScale: {x: 180.40541, y: 100.75748, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
